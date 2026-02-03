@@ -13,6 +13,9 @@ The framework follows a **Modular Layered Architecture** to ensure separation of
     * `com.userservice.steps`: Gherkin step definitions.
     * `com.userservice.runner`: TestNG configurations and Cucumber entry points.
 * **`src/test/resources`**: Feature files.
+* for local execution `mvn clean test`
+* to see the Allure report `mvn allure:serve`
+
 
 ## 🔄 CI/CD & Infrastructure
 
