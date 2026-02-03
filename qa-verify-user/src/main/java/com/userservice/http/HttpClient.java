@@ -1,6 +1,7 @@
 package com.userservice.http;
 
 import com.userservice.models.UserRequest;
+import com.userservice.utils.ConfigReader;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -13,10 +14,10 @@ public class HttpClient {
 
     public HttpClient() {
         this.spec = given()
-                .baseUri("https://reqres.in")
+                .baseUri(ConfigReader.getBaseUrl())
                 .basePath("/api")
                 .contentType(ContentType.JSON)
-                .header("x-api-key", "pub_b64ef190c3804a02aeee2e7b72b37f119c86b58546ee8d0e9822387bcbeaacbe")
+                .header("x-api-key", ConfigReader.getReqResApiKey())
                 .log().all();
     }
 
@@ -29,7 +30,7 @@ public class HttpClient {
 
     public Response getUser(long id) {
         return given()
-                .spec(spec) // И здесь тоже
+                .spec(spec)
                 .pathParam("id", id)
                 .get(USERS_ENDPOINT + "/{id}");
     }
