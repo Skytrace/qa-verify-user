@@ -12,7 +12,7 @@ The framework follows a **Modular Layered Architecture** to ensure separation of
 * **`src/test/java` (Test Layer)**:
     * `com.userservice.steps`: Gherkin step definitions.
     * `com.userservice.runner`: TestNG configurations and Cucumber entry points.
-* **`src/test/resources`**: Feature files, environment properties.
+* **`src/test/resources`**: Feature files.
 
 ## 🔄 CI/CD & Infrastructure
 
