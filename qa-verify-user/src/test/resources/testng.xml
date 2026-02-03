@@ -3,7 +3,7 @@
 <suite name="User API Regression Suite" parallel="methods" thread-count="2">
     <test name="API Tests">
         <classes>
-            <class name="com.userservice.steps.RunCucumberTest"/>
+            <class name="com.userservice.runner.RunCucumberTest"/>
         </classes>
     </test>
 </suite>

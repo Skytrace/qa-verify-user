@@ -1,6 +1,6 @@
 package com.userservice.http;
 
-import com.userservice.models.UserRequest;
+import com.userservice.models.UserRequestDTO;
 import com.userservice.utils.ConfigReader;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -21,7 +21,7 @@ public class HttpClient {
                 .log().all();
     }
 
-    public Response createUser(UserRequest request) {
+    public Response createUser(UserRequestDTO request) {
         return given()
                 .spec(spec)
                 .body(request)

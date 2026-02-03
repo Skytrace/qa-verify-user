@@ -1,20 +1,17 @@
 package com.userservice.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.Accessors;
+import lombok.*;
 
 @ToString
 @Getter
 @Setter
 @EqualsAndHashCode
-@Accessors(chain = true)
-public class UserRequest {
+public class UserResponseDTO {
     private String firstName;
     private String secondName;
     private String lastName;
     private String email;
     private String password;
+    private Long id;
+    private String createdAt;
 }

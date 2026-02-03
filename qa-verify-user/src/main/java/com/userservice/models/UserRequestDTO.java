@@ -1,19 +1,20 @@
 package com.userservice.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @ToString
 @Getter
 @Setter
 @EqualsAndHashCode
-public class UserResponse {
+@Accessors(chain = true)
+public class UserRequestDTO {
     private String firstName;
     private String secondName;
     private String lastName;
     private String email;
     private String password;
-    private Long id;
-    private String createdAt;
 }

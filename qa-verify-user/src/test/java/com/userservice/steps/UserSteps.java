@@ -1,9 +1,7 @@
 package com.userservice.steps;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.userservice.http.HttpClient;
-import com.userservice.models.UserRequest;
-import com.userservice.models.UserResponse;
+import com.userservice.models.UserRequestDTO;
+import com.userservice.models.UserResponseDTO;
 import com.userservice.utils.TestContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -14,26 +12,23 @@ import java.util.Map;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class UserSteps {
-    private final HttpClient httpClient = new HttpClient();
-    private final ObjectMapper mapper = new ObjectMapper();
-    private final TestContext context;
+public class UserSteps extends BaseSteps {
 
     public UserSteps(TestContext context) {
-        this.context = context;
+        super(context);
     }
 
     @Given("I create a user with the following details:")
     public void createUser(DataTable table) {
         Map<String, String> data = table.asMaps(String.class, String.class).get(0);
-        UserRequest request = mapper.convertValue(data, UserRequest.class);
+        UserRequestDTO request = mapper.convertValue(data, UserRequestDTO.class);
 
         context.setResponse(httpClient.createUser(request));
     }
 
     @When("I request the user by current ID")
     public void requestUserByCurrentId() {
-        Long id = context.getResponse().as(UserResponse.class).getId();
+        Long id = context.getResponse().as(UserResponseDTO.class).getId();
         context.setResponse(httpClient.getUser(id));
     }
 
