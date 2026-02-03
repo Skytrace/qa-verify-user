@@ -11,22 +11,22 @@ Feature: User Management API Validation
       | <firstName> | <email> |
 
     Examples:
-      | firstName | secondName | lastName | email          | password |
-      | John      | D.         | Doe      | john@email.com | pass123  |
-      | John      | D.         | [blank]  | john@email.com | pass123  |
+      | firstName | secondName | lastName | email           | password |
+      | John      | D.         | Doe      | john@email.com  | pass123  |
+      | Mike      | S.         |          | mikes@email.com | pass123  |
 
   @regression @negative
   Scenario: Try to create user without mandatory firstName
     Given I create a user with the following details:
-      | lastName | email          | password |
-      | Smith    | smith@mail.com | pass123  |
+      | lastName | email         | password |
+      | Bob      | bob@email.com | pass123  |
     Then the response status should be 400
 
   @regression @positive
   Scenario: Successfully retrieve user by ID
     Given I create a user with the following details:
       | firstName | email          |
-      | John      | john@email.com |
+      | Stan      | stan@email.com |
     When I request the user by current ID
     Then the response status should be 200
 
